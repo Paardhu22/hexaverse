@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { History, Star, Medal, Trophy } from "lucide-react";
+import { History, Star, Medal } from "lucide-react";
 
 export default async function HallOfFamePage() {
   const pastWinners = await prisma.hallOfFame.findMany({
@@ -56,8 +56,7 @@ export default async function HallOfFamePage() {
               </div>
             </div>
             
-            {/* Bottom Accent Bar */}
-            <div className="h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
+
           </div>
         </div>
 

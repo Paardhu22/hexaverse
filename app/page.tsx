@@ -9,10 +9,6 @@ export default async function HomePage() {
     where: { status: { in: ['Upcoming', 'Live'] } }
   });
 
-  const leaderboardTop = await prisma.leaderboard.findMany({
-    take: 3,
-    orderBy: { points: 'desc' }
-  });
 
   const totalTeams = await prisma.team.count();
   const distinctSports = await prisma.match.groupBy({ by: ['sport'] });
@@ -74,9 +70,9 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 gap-10">
           {/* Featured Matches */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold text-white flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 text-[var(--color-primary-400)]" />
@@ -110,35 +106,6 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* Leaderboard Preview */}
-          <div>
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-white flex items-center gap-3">
-                <Trophy className="w-8 h-8 text-yellow-400" />
-                Top Standings
-              </h2>
-            </div>
-            <div className="glass-card overflow-hidden">
-              {leaderboardTop.map((leader, idx) => (
-                <div key={leader.id} className={`p-4 flex items-center justify-between ${idx !== 2 ? 'border-b border-white/5' : ''} hover:bg-white/5 transition-colors`}>
-                  <div className="flex items-center gap-4">
-                    <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${idx === 0 ? 'bg-yellow-500/20 text-yellow-400' : idx === 1 ? 'bg-gray-400/20 text-gray-300' : 'bg-orange-500/20 text-orange-400'}`}>
-                      #{idx + 1}
-                    </span>
-                    <span className="font-bold text-white">{leader.team}</span>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-lg font-bold text-[var(--color-primary-400)]">{leader.points} pts</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 text-center">
-               <Link href="/leaderboard" className="inline-block text-sm font-semibold text-gray-400 hover:text-white transition-colors">
-                 View Full Leaderboard →
-               </Link>
-            </div>
-          </div>
         </div>
       </div>
     </div>

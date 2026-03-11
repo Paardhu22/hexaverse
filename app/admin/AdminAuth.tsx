@@ -1,21 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const session = localStorage.getItem('hexa_admin_session');
+    if (session === 'hexa_authenticated_2026') {
+      setIsAuthenticated(true);
+    }
+    setIsChecking(false);
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === 'hexaverse@2026') {
+      localStorage.setItem('hexa_admin_session', 'hexa_authenticated_2026');
       setIsAuthenticated(true);
       setError('');
     } else {
       setError('Incorrect password');
     }
   };
+
+  if (isChecking) {
+    return (
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--color-primary-400)]"></div>
+      </div>
+    );
+  }
 
   if (isAuthenticated) {
     return <>{children}</>;

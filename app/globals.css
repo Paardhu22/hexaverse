@@ -50,3 +50,22 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Global Select & Form Styling Fixes */
+select {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #121A2F; /* navy-700 */
+  color: white;
+  padding: 10px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary-400) !important;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+

@@ -30,10 +30,42 @@ export async function createMatch(data: {
 }
 
 export async function updateLeaderboard(team: string, gold: number, silver: number, points: number) {
-  await prisma.leaderboard.update({
+  await prisma.leaderboard.upsert({
     where: { team },
-    data: { gold, silver, points }
+    update: { gold, silver, points },
+    create: { team, gold, silver, points }
   });
   revalidatePath("/leaderboard");
   revalidatePath("/");
+}
+
+export async function bulkUpdateLeaderboard(data: { team: string, gold: number, silver: number, points: number }[]) {
+  for (const item of data) {
+    await prisma.leaderboard.upsert({
+      where: { team: item.team },
+      update: { gold: item.gold, silver: item.silver, points: item.points },
+      create: { team: item.team, gold: item.gold, silver: item.silver, points: item.points }
+    });
+  }
+  revalidatePath("/leaderboard");
+  revalidatePath("/");
+  revalidatePath("/admin");
+}
+
+export async function deleteMatch(matchId: string) {
+  await prisma.match.delete({
+    where: { id: matchId }
+  });
+  revalidatePath("/fixtures");
+  revalidatePath("/");
+  revalidatePath("/admin");
+}
+
+export async function deleteLeaderboard(team: string) {
+  await prisma.leaderboard.delete({
+    where: { team }
+  });
+  revalidatePath("/leaderboard");
+  revalidatePath("/");
+  revalidatePath("/admin");
 }
