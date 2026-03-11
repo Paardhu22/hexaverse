@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { History, Star, Medal } from "lucide-react";
+import { History, Star, Medal, Trophy } from "lucide-react";
 
 export default async function HallOfFamePage() {
   const pastWinners = await prisma.hallOfFame.findMany({
@@ -20,50 +20,48 @@ export default async function HallOfFamePage() {
           <History className="w-5 h-5" /> Celebrating eternal legends of HEXAVERSE.
         </p>
 
-        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">
-          {pastWinners.map((winner, idx) => (
-             <div key={winner.id} className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active ${idx !== 0 ? 'opacity-80 hover:opacity-100 transition-opacity duration-300' : ''}`}>
-               {/* Timeline Dot */}
-               <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[var(--background)] bg-yellow-500 text-black shadow z-10 md:mx-auto">
-                 <Star className="w-5 h-5 fill-black" />
-               </div>
-               
-               {/* Content Card */}
-               <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 md:p-8 relative">
-                 <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                   <h2 className="text-8xl font-black italic text-white/50">{winner.year}</h2>
-                 </div>
-                 <div className="flex flex-col gap-4 relative z-10">
-                   <div>
-                     <span className="text-[var(--color-primary-400)] font-bold text-sm tracking-widest uppercase">Champion {winner.year}</span>
-                     <h3 className="text-4xl font-black text-white glow-text italic tracking-wide mt-1 flex items-center gap-3">
-                       <Medal className="w-8 h-8 text-yellow-400" />
-                       {winner.winner}
-                     </h3>
-                   </div>
-                   
-                   <div className="grid grid-cols-2 gap-4 mt-2">
-                     <div className="bg-black/40 p-3 rounded-lg border border-white/5">
-                       <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider block mb-1">Runner-up</span>
-                       <span className="text-lg font-bold text-gray-200">{winner.runnerUp}</span>
-                     </div>
-                     <div className="bg-black/40 p-3 rounded-lg border border-white/5">
-                       <span className="text-xs text-gray-400 font-semibold uppercase tracking-wider block mb-1">Total Points</span>
-                       <span className="text-lg font-bold text-[var(--color-primary-400)]">{winner.points} pts</span>
-                     </div>
-                   </div>
+        {/* 2025 Champion Spotlight */}
+        <div className="mb-24 relative group">
+          <div className="glass-card overflow-hidden border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] relative z-10">
+            <div className="absolute top-0 right-0 p-8 pt-12 opacity-5 select-none pointer-events-none">
+              <h2 className="text-[12rem] font-black italic text-white tracking-widest leading-none">2025</h2>
+            </div>
+            
+            <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+              <div className="relative">
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 flex items-center justify-center p-6 shadow-2xl">
+                  <img 
+                    src="/logos/Vajra_Logo-removebg-preview.png" 
+                    alt="VAJRA" 
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] brightness-110 contrast-125" 
+                  />
+                </div>
+              </div>
 
-                   {winner.mvp && (
-                     <div className="mt-2 bg-gradient-to-r from-purple-500/10 to-transparent p-3 rounded-lg border-l-2 border-purple-500 flex items-center gap-3 text-sm">
-                       <span className="font-bold text-purple-400">Tournament MVP:</span>
-                       <span className="text-white font-semibold">{winner.mvp}</span>
-                     </div>
-                   )}
-                 </div>
-               </div>
-             </div>
-          ))}
+              {/* Champion Details */}
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 font-black tracking-widest uppercase text-sm mb-6">
+                  <Star className="w-4 h-4 fill-current" />
+                  Official 2025 Champion
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+                
+                <h2 className="text-6xl md:text-8xl font-black italic text-white tracking-tighter mb-4 leading-none">
+                  TEAM <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">VAJRA</span>
+                </h2>
+                
+                <p className="text-2xl text-gray-300 italic max-w-xl font-medium">
+                  "Striking with the force and precision of thunder. The undisputed kings of the 2025 Hexaverse season."
+                </p>
+              </div>
+            </div>
+            
+            {/* Bottom Accent Bar */}
+            <div className="h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
+          </div>
         </div>
+
+        {/* Timeline removed per user request - Spotlight is now the primary focus */}
       </div>
     </div>
   );

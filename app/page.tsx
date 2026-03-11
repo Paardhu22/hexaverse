@@ -31,12 +31,8 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-primary-400)]/10 via-transparent to-[var(--color-purple-500)]/10"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--color-primary-400)]/30 bg-[var(--color-primary-400)]/10 mb-8 backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-[var(--color-primary-400)]" />
-            <span className="text-sm font-medium text-[var(--color-primary-400)]">The Ultimate College Esports Tournament</span>
-          </div>
           <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-6 text-white drop-shadow-[0_0_20px_rgba(0,240,255,0.2)]">
-            HEXAVERSE <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary-400)] to-[var(--color-purple-500)] drop-shadow-[0_0_15px_rgba(112,0,255,0.3)]">2.0</span>
+            HEXAVERSE <span className="inline-block pr-4 text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary-400)] to-[var(--color-purple-500)] drop-shadow-[0_0_15px_rgba(112,0,255,0.3)]">2.0</span>
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
             Witness the clash of 4 factions: Agni, Samudra, Vajra, and Vayu. 3 Categories, 1 Champion.
