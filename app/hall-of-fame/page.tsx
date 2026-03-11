@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { History, Star, Medal } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function HallOfFamePage() {
   const pastWinners = await prisma.hallOfFame.findMany({
     orderBy: { year: 'desc' }

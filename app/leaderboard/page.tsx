@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { Trophy, Medal } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function LeaderboardPage() {
   const leaderboards = await prisma.leaderboard.findMany({
     orderBy: { points: 'desc' }

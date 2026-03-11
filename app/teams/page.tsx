@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { Users2, Target, Award } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function TeamsPage() {
   const teams = await prisma.team.findMany({
     orderBy: { name: 'asc' }

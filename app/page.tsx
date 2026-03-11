@@ -2,6 +2,8 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { ArrowRight, Trophy, Users, ShieldAlert, Sparkles, Activity } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const matches = await prisma.match.findMany({
     take: 3,

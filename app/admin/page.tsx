@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma";
 import AdminClient from "@/components/AdminClient";
 import AdminAuth from "./AdminAuth";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPage() {
   const matches = await prisma.match.findMany({
     orderBy: { time: 'desc' }

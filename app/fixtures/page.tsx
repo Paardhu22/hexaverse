@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { CalendarDays, MapPin } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function FixturesPage() {
   const matches = await prisma.match.findMany({
     orderBy: { time: 'asc' }
