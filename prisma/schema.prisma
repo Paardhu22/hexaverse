@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  captain     String
+  description String
+  wins        Int      @default(0)
+  points      Int      @default(0)
+  logo        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Match {
+  id           String   @id @default(uuid())
+  sport        String
+  category     String   // Indoor, Esports, Outdoor
+  teamA        String
+  teamB        String
+  scoreA       String?
+  scoreB       String?
+  winner       String?
+  leagueFormat String   // League, Semi, Final
+  time         DateTime
+  status       String   @default("Upcoming") // Upcoming, Live, Finished
+  venue        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model HallOfFame {
+  id        String   @id @default(uuid())
+  year      Int      @unique
+  winner    String
+  runnerUp  String
+  points    Int
+  mvp       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Leaderboard {
+  id        String   @id @default(uuid())
+  team      String   @unique
+  gold      Int      @default(0)
+  silver    Int      @default(0)
+  points    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
