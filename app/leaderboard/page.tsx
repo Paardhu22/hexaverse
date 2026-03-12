@@ -52,6 +52,57 @@ export default async function LeaderboardPage() {
             </table>
           </div>
         </div>
+
+        {/* Points System Rules */}
+        <div className="mt-16">
+          <div className="flex items-center gap-3 mb-6">
+            <Trophy className="w-6 h-6 text-[var(--color-primary-400)]" />
+            <h2 className="text-2xl font-bold text-white uppercase tracking-wider italic">Points <span className="text-[var(--color-primary-400)]">System</span></h2>
+          </div>
+          
+          <div className="glass-card overflow-hidden">
+            <div className="overflow-x-auto no-scrollbar">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-white/5 border-b border-white/10 text-xs text-gray-400 font-black uppercase tracking-widest">
+                    <th className="py-4 px-6">Category</th>
+                    <th className="py-4 px-6">Type</th>
+                    <th className="py-4 px-6 text-center text-yellow-500">Gold Points</th>
+                    <th className="py-4 px-6 text-center text-gray-400">Silver Points</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 text-sm">
+                  {/* Outdoor Section */}
+                  <tr className="hover:bg-white/5 transition-colors">
+                    <td rowSpan={2} className="py-8 px-6 font-black text-white bg-white/2 border-r border-white/5 italic">Outdoor</td>
+                    <td className="py-4 px-6 text-gray-300 font-medium">Team Sport</td>
+                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">8 pts</td>
+                    <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">5 pts</td>
+                  </tr>
+                  <tr className="hover:bg-white/5 transition-colors">
+                    <td className="py-4 px-6 text-gray-300 font-medium border-l border-white/5">Single Sport</td>
+                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">5 pts</td>
+                    <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">3 pts</td>
+                  </tr>
+                  
+                  {/* Indoor & Esports Section */}
+                  <tr className="hover:bg-white/5 transition-colors">
+                    <td rowSpan={2} className="py-8 px-6 font-black text-white bg-[var(--color-primary-400)]/5 border-r border-white/5 italic">Indoor & Esports</td>
+                    <td className="py-4 px-6 text-gray-300 font-medium">Team Sport</td>
+                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">5 pts</td>
+                    <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">3 pts</td>
+                  </tr>
+                  <tr className="hover:bg-white/5 transition-colors">
+                    <td className="py-4 px-6 text-gray-300 font-medium border-l border-white/5">Single Sport</td>
+                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">3 pts</td>
+                    <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">1 pt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="mt-4 text-xs text-gray-500 italic">* Points are automatically calculated and added to the faction's total standings.</p>
+        </div>
       </div>
     </div>
   );
