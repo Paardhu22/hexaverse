@@ -225,7 +225,10 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
                   </div>
               </div>
 
-              <button type="submit" className="mt-4 bg-[var(--color-purple-500)] text-white px-6 py-3 rounded-lg font-bold transition-transform hover:scale-[1.02]">
+              <button 
+                type="submit" 
+                className="w-full mt-4 bg-gradient-to-r from-[var(--color-purple-500)] to-[#9045ff] text-white px-6 py-4 rounded-2xl font-black uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_20px_rgba(112,0,255,0.2)]"
+              >
                 Create Match Schedule
               </button>
 
@@ -301,10 +304,10 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
                 );
               })}
 
-              <div className="sticky bottom-0 pt-6 pb-2 bg-[var(--background)] bg-opacity-80 backdrop-blur-sm">
+               <div className="sticky bottom-0 pt-6 pb-2 bg-[var(--background)] bg-opacity-80 backdrop-blur-sm">
                 <button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-black py-4 rounded-xl shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all active:scale-[0.98] uppercase tracking-widest flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-black py-4 rounded-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all active:scale-95 uppercase tracking-widest flex items-center justify-center gap-3"
                 >
                   <CheckCircle2 className="w-6 h-6" />
                   Save All Leaderboard Changes

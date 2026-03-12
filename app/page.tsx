@@ -35,11 +35,11 @@ export default async function HomePage() {
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
             Witness the clash of 4 factions: Agni, Samudra, Vajra, and Vayu. 3 Categories, 1 Champion.
           </p>
-          <div className="mt-10 flex justify-center gap-4">
-            <Link href="/fixtures" className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[var(--color-primary-500)] rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,195,255,0.4)]">
-              <span className="relative z-10 flex items-center gap-2">View Fixtures <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
+            <Link href="/fixtures" className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-black uppercase tracking-widest text-white bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-primary-400)] rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,195,255,0.4)] active:scale-95">
+              <span className="relative z-10 flex items-center gap-2 italic">View Fixtures <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
             </Link>
-            <Link href="/teams" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white glass-card hover:bg-white/10 transition-all">
+            <Link href="/teams" className="inline-flex items-center justify-center px-8 py-4 text-base font-black uppercase tracking-widest text-white glass-card rounded-2xl border border-white/10 hover:bg-white/10 transition-all hover:scale-105 active:scale-95 italic">
               Explore Teams
             </Link>
           </div>

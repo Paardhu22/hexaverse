@@ -66,7 +66,7 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
           </div>
           <button
             type="submit"
-            className="w-full bg-[var(--color-primary-500)] text-white font-bold py-3 rounded-lg hover:bg-[var(--color-primary-600)] transition-colors"
+            className="w-full bg-gradient-to-r from-[var(--color-primary-500)] to-[var(--color-primary-400)] text-white font-black py-4 rounded-2xl hover:brightness-110 transition-all active:scale-95 uppercase tracking-widest shadow-[0_0_20px_rgba(0,195,255,0.2)]"
           >
             Access Control Panel
           </button>
