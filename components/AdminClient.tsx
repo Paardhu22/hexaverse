@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { updateMatchScore, createMatch, updateLeaderboard, deleteMatch, deleteLeaderboard, bulkUpdateLeaderboard } from "@/app/actions";
-import { Trash2, AlertTriangle, CheckCircle2, Trophy, LogOut } from "lucide-react";
+import { Trash2, AlertTriangle, CheckCircle2, Trophy, LogOut, Search, X } from "lucide-react";
 
 type Match = any; // Typing shorthand for speed, adjust in real prod
 type Leaderboard = any;
@@ -17,6 +17,18 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
   const [activeTab, setActiveTab] = useState("scores");
   const [matches, setMatches] = useState(initialMatches);
   const [leaderboards, setLeaderboards] = useState(initialLeaderboards);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredMatches = matches.filter(m => {
+    const s = searchQuery.toLowerCase();
+    return (
+      m.sport.toLowerCase().includes(s) ||
+      m.teamA.toLowerCase().includes(s) ||
+      m.teamB.toLowerCase().includes(s) ||
+      m.status.toLowerCase().includes(s) ||
+      (m.category?.toLowerCase() || "").includes(s)
+    );
+  });
 
   return (
     <div className="flex flex-col gap-6">
@@ -57,8 +69,32 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
         {/* TAB: Live Scores */}
         {activeTab === "scores" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Live Score Management</h2>
-            {matches.map((m) => (
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+              <h2 className="text-2xl font-bold text-white">Live Score Management</h2>
+              
+              {/* Admin Search */}
+              <div className="relative w-full md:w-72">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input 
+                  type="text" 
+                  placeholder="Filter by team or sport..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-black/40 border border-white/10 rounded-xl py-2 pl-10 pr-4 text-white text-sm focus:outline-none focus:border-[var(--color-primary-400)] transition-all placeholder:text-gray-500"
+                />
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {filteredMatches.map((m) => (
               <form 
                 key={m.id} 
                 className="bg-black/30 p-4 rounded-xl border border-white/5 grid grid-cols-1 md:grid-cols-5 gap-4 items-center"
@@ -122,7 +158,14 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
                   </button>
                 </div>
               </form>
-            ))}
+              ))}
+              
+              {filteredMatches.length === 0 && (
+                <div className="text-center py-12 bg-black/20 rounded-2xl border border-dashed border-white/10">
+                   <p className="text-gray-500 italic">No matches match your search criteria.</p>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
