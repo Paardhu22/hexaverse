@@ -4,9 +4,14 @@ import { CalendarDays, MapPin } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export default async function FixturesPage() {
-  const matches = await prisma.match.findMany({
-    orderBy: { time: 'asc' }
-  });
+  let matches: any[] = [];
+  try {
+    matches = await prisma.match.findMany({
+      orderBy: { time: 'asc' }
+    });
+  } catch (error) {
+    console.error("Database connection error on fixtures page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent pt-24 pb-12">

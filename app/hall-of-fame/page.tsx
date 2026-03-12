@@ -4,9 +4,14 @@ import { History, Star, Medal } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export default async function HallOfFamePage() {
-  const pastWinners = await prisma.hallOfFame.findMany({
-    orderBy: { year: 'desc' }
-  });
+  let pastWinners: any[] = [];
+  try {
+    pastWinners = await prisma.hallOfFame.findMany({
+      orderBy: { year: 'desc' }
+    });
+  } catch (error) {
+    console.error("Database connection error on hall of fame page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent pt-24 pb-12 relative overflow-hidden">

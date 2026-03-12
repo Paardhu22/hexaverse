@@ -4,13 +4,19 @@ import TeamsClient from "@/components/TeamsClient";
 export const dynamic = "force-dynamic";
 
 export default async function TeamsPage() {
-  const teams = await prisma.team.findMany({
-    orderBy: { name: 'asc' }
-  });
+  let teams: any[] = [];
+  let matches: any[] = [];
+  try {
+    teams = await prisma.team.findMany({
+      orderBy: { name: 'asc' }
+    });
 
-  const matches = await prisma.match.findMany({
-    orderBy: { time: 'asc' }
-  });
+    matches = await prisma.match.findMany({
+      orderBy: { time: 'asc' }
+    });
+  } catch (error) {
+    console.error("Database connection error on teams page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent pt-24 pb-12">

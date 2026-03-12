@@ -4,9 +4,14 @@ import { Trophy, Medal } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export default async function LeaderboardPage() {
-  const leaderboards = await prisma.leaderboard.findMany({
-    orderBy: { points: 'desc' }
-  });
+  let leaderboards: any[] = [];
+  try {
+    leaderboards = await prisma.leaderboard.findMany({
+      orderBy: { points: 'desc' }
+    });
+  } catch (error) {
+    console.error("Database connection error on leaderboard page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent pt-24 pb-12">

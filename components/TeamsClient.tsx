@@ -100,10 +100,10 @@ export default function TeamsClient({ teams, matches }: TeamsClientProps) {
               </div>
 
               {/* Game List Section */}
-              <div className={`mt-8 space-y-4 overflow-hidden transition-all duration-500 ${isSelected ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}>
-                <div className="pt-6 border-t border-white/10">
+              <div className={`mt-8 space-y-4 overflow-hidden transition-all duration-500 ${isSelected ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}>
+                <div className="pt-6 border-t border-white/10 pb-2">
                   <h3 className="text-sm font-black text-[var(--color-primary-400)] uppercase tracking-[0.3em] mb-4">Scheduled Games</h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3 pb-4">
                     {teamMatches.length > 0 ? teamMatches.map((m) => (
                       <div key={m.id} className="bg-white/5 p-4 rounded-xl border border-white/5 flex flex-col gap-2 hover:bg-white/10 transition-colors">
                         <div className="flex justify-between items-center">
@@ -117,14 +117,14 @@ export default function TeamsClient({ teams, matches }: TeamsClientProps) {
                         <div className="flex justify-between items-center">
                           <span className="text-white font-bold">{m.teamA} <span className="text-gray-500 text-xs italic mx-1">VS</span> {m.teamB}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-xs text-gray-500 font-bold">
-                           <div className="flex items-center gap-1">
-                             <CalendarDays className="w-3 h-3 text-[var(--color-primary-400)]" />
-                             {new Date(m.time).toLocaleDateString()}
+                        <div className="flex items-center gap-3 text-xs text-gray-500 font-black">
+                           <div className="flex items-center gap-1.5">
+                             <CalendarDays className="w-3.5 h-3.5 text-[var(--color-primary-400)]" />
+                             {new Date(m.time).toLocaleDateString('en-GB')}
                            </div>
                            {m.venue && (
-                             <div className="flex items-center gap-1">
-                               <MapPin className="w-3 h-3 text-[var(--color-purple-500)]" />
+                             <div className="flex items-center gap-1.5">
+                               <MapPin className="w-3.5 h-3.5 text-[var(--color-purple-500)]" />
                                {m.venue}
                              </div>
                            )}
@@ -137,7 +137,7 @@ export default function TeamsClient({ teams, matches }: TeamsClientProps) {
                 </div>
               </div>
 
-              <div className="mt-6 flex justify-center text-[10px] md:hidden font-black text-[var(--color-primary-400)] uppercase tracking-widest">
+              <div className="mt-4 flex justify-center text-[10px] md:hidden font-black text-[var(--color-primary-400)] uppercase tracking-[0.2em] border-t border-white/5 pt-4">
                  {isSelected ? "Click to Close" : "Click to view games"}
               </div>
             </div>

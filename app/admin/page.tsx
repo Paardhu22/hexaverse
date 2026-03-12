@@ -5,17 +5,25 @@ import AdminAuth from "./AdminAuth";
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const matches = await prisma.match.findMany({
-    orderBy: { time: 'desc' }
-  });
+  let matches: any[] = [];
+  let leaderboards: any[] = [];
+  let teams: { name: string }[] = [];
+  
+  try {
+    matches = await prisma.match.findMany({
+      orderBy: { time: 'desc' }
+    });
 
-  const leaderboards = await prisma.leaderboard.findMany({
-    orderBy: { points: 'desc' }
-  });
+    leaderboards = await prisma.leaderboard.findMany({
+      orderBy: { points: 'desc' }
+    });
 
-  const teams = await prisma.team.findMany({
-    select: { name: true }
-  });
+    teams = await prisma.team.findMany({
+      select: { name: true }
+    });
+  } catch (error) {
+    console.error("Database connection error on admin page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent pt-24 pb-12">

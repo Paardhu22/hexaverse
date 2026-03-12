@@ -5,21 +5,27 @@ import { ArrowRight, Trophy, Users, ShieldAlert, Sparkles, Activity } from "luci
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const matches = await prisma.match.findMany({
-    take: 3,
-    orderBy: { time: 'asc' },
-    where: { status: { in: ['Upcoming', 'Live'] } }
-  });
+  let matches: any[] = [];
+  let stats = { teams: 0, sports: 0, matches: 0 };
 
+  try {
+    matches = await prisma.match.findMany({
+      take: 3,
+      orderBy: { time: 'asc' },
+      where: { status: { in: ['Upcoming', 'Live'] } }
+    });
 
-  const totalTeams = await prisma.team.count();
-  const distinctSports = await prisma.match.groupBy({ by: ['sport'] });
+    const totalTeams = await prisma.team.count();
+    const distinctSports = await prisma.match.groupBy({ by: ['sport'] });
 
-  const stats = {
-    teams: totalTeams,
-    sports: distinctSports.length,
-    matches: await prisma.match.count()
-  };
+    stats = {
+      teams: totalTeams,
+      sports: distinctSports.length,
+      matches: await prisma.match.count()
+    };
+  } catch (error) {
+    console.error("Database connection error on home page:", error);
+  }
 
   return (
     <div className="min-h-screen bg-transparent">
