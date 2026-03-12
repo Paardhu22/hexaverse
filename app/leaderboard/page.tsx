@@ -37,10 +37,10 @@ export default async function LeaderboardPage() {
                 {leaderboards.map((entry, idx) => (
                   <tr key={entry.id} className="transition-colors hover:bg-white/5 group">
                     <td className="py-4 sm:py-6 px-3 sm:px-6 font-black text-lg sm:text-2xl whitespace-nowrap">
-                      {idx === 0 ? <span className="text-yellow-400 inline-flex items-center gap-1.5 sm:gap-2 glow-text"><Trophy className="w-4 h-4 sm:w-6 sm:h-6" /> 1</span> : 
-                       idx === 1 ? <span className="text-gray-300 inline-flex items-center gap-1.5 sm:gap-2"><Medal className="w-4 h-4 sm:w-6 sm:h-6" /> 2</span> : 
-                       idx === 2 ? <span className="text-orange-400 inline-flex items-center gap-1.5 sm:gap-2"><Medal className="w-4 h-4 sm:w-6 sm:h-6" /> 3</span> : 
-                       <span className="text-gray-600 pl-6 sm:pl-8">{idx + 1}</span>}
+                      {idx === 0 ? <span className="text-yellow-400 inline-flex items-center gap-1.5 sm:gap-2 glow-text"><Trophy className="w-4 h-4 sm:w-6 sm:h-6" /> 1</span> :
+                        idx === 1 ? <span className="text-gray-300 inline-flex items-center gap-1.5 sm:gap-2"><Medal className="w-4 h-4 sm:w-6 sm:h-6" /> 2</span> :
+                          idx === 2 ? <span className="text-orange-400 inline-flex items-center gap-1.5 sm:gap-2"><Medal className="w-4 h-4 sm:w-6 sm:h-6" /> 3</span> :
+                            <span className="text-gray-600 pl-6 sm:pl-8">{idx + 1}</span>}
                     </td>
                     <td className="py-4 sm:py-6 px-3 sm:px-6 font-bold text-base sm:text-xl text-white group-hover:text-[var(--color-primary-400)] transition-colors whitespace-nowrap">{entry.team}</td>
                     <td className="py-4 sm:py-6 px-3 sm:px-6 font-bold text-yellow-500 text-center text-lg sm:text-xl bg-yellow-500/5">{entry.gold}</td>
@@ -59,7 +59,7 @@ export default async function LeaderboardPage() {
             <Trophy className="w-6 h-6 text-[var(--color-primary-400)]" />
             <h2 className="text-2xl font-bold text-white uppercase tracking-wider italic">Points <span className="text-[var(--color-primary-400)]">System</span></h2>
           </div>
-          
+
           <div className="glass-card overflow-hidden">
             <div className="overflow-x-auto no-scrollbar">
               <table className="w-full text-left border-collapse">
@@ -76,7 +76,7 @@ export default async function LeaderboardPage() {
                   <tr className="hover:bg-white/5 transition-colors">
                     <td rowSpan={2} className="py-8 px-6 font-black text-white bg-white/2 border-r border-white/5 italic">Outdoor</td>
                     <td className="py-4 px-6 text-gray-300 font-medium">Team Sport</td>
-                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">8 pts</td>
+                    <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">7 pts</td>
                     <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">5 pts</td>
                   </tr>
                   <tr className="hover:bg-white/5 transition-colors">
@@ -84,7 +84,7 @@ export default async function LeaderboardPage() {
                     <td className="py-4 px-6 text-center font-black text-yellow-500 text-lg sm:text-xl">5 pts</td>
                     <td className="py-4 px-6 text-center font-black text-gray-400 text-lg sm:text-xl">3 pts</td>
                   </tr>
-                  
+
                   {/* Indoor & Esports Section */}
                   <tr className="hover:bg-white/5 transition-colors">
                     <td rowSpan={2} className="py-8 px-6 font-black text-white bg-[var(--color-primary-400)]/5 border-r border-white/5 italic">Indoor & Esports</td>
