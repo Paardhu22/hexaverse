@@ -28,14 +28,14 @@ export default async function HallOfFamePage() {
             <div className="absolute top-0 right-0 p-8 pt-12 opacity-5 select-none pointer-events-none">
               <h2 className="text-[12rem] font-black italic text-white tracking-widest leading-none">2025</h2>
             </div>
-            
+
             <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
               <div className="relative">
                 <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 flex items-center justify-center p-6 shadow-2xl">
-                  <img 
-                    src="/logos/Vajra_Logo-removebg-preview.png" 
-                    alt="VAJRA" 
-                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] brightness-110 contrast-125" 
+                  <img
+                    src="/logos/Vajra_Logo-removebg-preview.png"
+                    alt="VAJRA"
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] brightness-110 contrast-125"
                   />
                 </div>
               </div>
@@ -44,20 +44,20 @@ export default async function HallOfFamePage() {
               <div className="flex-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 font-black tracking-widest uppercase text-sm mb-6">
                   <Star className="w-4 h-4 fill-current" />
-                  Official 2025 Champion
+                  2025 Champion
                   <Star className="w-4 h-4 fill-current" />
                 </div>
-                
+
                 <h2 className="text-6xl md:text-8xl font-black italic text-white tracking-tighter mb-4 leading-none">
                   TEAM <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-500">VAJRA</span>
                 </h2>
-                
+
                 <p className="text-2xl text-gray-300 italic max-w-xl font-medium">
                   "Striking with the force and precision of thunder. The undisputed kings of the 2025 Hexaverse season."
                 </p>
               </div>
             </div>
-            
+
 
           </div>
         </div>
