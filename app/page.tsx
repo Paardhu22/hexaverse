@@ -88,7 +88,7 @@ export default async function HomePage() {
                   <div className="mb-4 sm:mb-0 text-center sm:text-left">
                     <span className="text-xs font-bold text-[var(--color-purple-500)] uppercase tracking-wider">{match.category} - {match.leagueFormat}</span>
                     <h3 className="text-xl font-bold text-white mt-1">{match.sport}</h3>
-                    <p className="text-sm text-gray-400">{new Date(match.time).toLocaleDateString()} at {new Date(match.time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} • {match.venue}</p>
+                    <p className="text-sm text-gray-400">{new Date(match.time).toLocaleDateString()} • {match.venue}</p>
                   </div>
                   <div className="flex items-center gap-6 bg-black/40 px-6 py-3 rounded-xl border border-white/5">
                     <span className="text-lg font-black">{match.teamA}</span>

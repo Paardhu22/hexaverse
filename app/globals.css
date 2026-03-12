@@ -69,3 +69,12 @@ input:focus, select:focus {
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
 
+
+/* Utility to hide scrollbars but keep scrolling functional */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

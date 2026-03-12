@@ -59,7 +59,7 @@ export default async function FixturesPage() {
               <div className="bg-white/5 p-4 border-t border-white/10 flex items-center justify-between text-sm text-gray-400 font-medium">
                 <div className="flex items-center gap-2">
                   <CalendarDays className="w-4 h-4 text-[var(--color-primary-400)]" />
-                  {new Date(match.time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} • {new Date(match.time).toLocaleDateString()}
+                  {new Date(match.time).toLocaleDateString()}
                 </div>
                 {match.venue && (
                   <div className="flex items-center gap-2">

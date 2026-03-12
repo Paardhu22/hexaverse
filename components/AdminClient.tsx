@@ -21,20 +21,22 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
   return (
     <div className="flex flex-col gap-6">
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">
-        {["scores", "schedule", "leaderboard"].map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${
-              activeTab === tab 
-                ? "bg-[var(--color-primary-400)]/20 text-[var(--color-primary-400)] border-b-2 border-[var(--color-primary-400)]" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            {tab.replace("-", " ")}
-          </button>
-        ))}
+      <div className="flex items-center justify-between border-b border-white/10 overflow-x-auto no-scrollbar scroll-smooth">
+        <div className="flex flex-1 gap-1 min-w-max">
+          {["scores", "schedule", "leaderboard"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 md:px-6 py-4 rounded-t-xl font-black uppercase tracking-widest text-[10px] md:text-xs transition-all flex-shrink-0 ${
+                activeTab === tab 
+                  ? "bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-b-2 border-[var(--color-primary-400)]" 
+                  : "text-gray-500 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              {tab.replace("-", " ")}
+            </button>
+          ))}
+        </div>
         <button
           onClick={() => {
             if (confirm("Logout from admin session?")) {
@@ -42,10 +44,10 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
               window.location.reload();
             }
           }}
-          className="ml-auto flex items-center gap-2 px-4 py-3 text-red-500 hover:text-red-400 hover:bg-red-500/5 transition-all font-bold text-sm uppercase tracking-widest rounded-t-xl"
+          className="flex-shrink-0 flex items-center gap-2 px-4 py-4 text-red-500 hover:text-red-400 hover:bg-red-500/5 transition-all font-black text-[10px] md:text-xs uppercase tracking-[0.2em] border-l border-white/10"
         >
           <LogOut className="w-4 h-4" />
-          Logout
+          <span className="hidden sm:inline">Logout</span>
         </button>
       </div>
 
