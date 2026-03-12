@@ -40,7 +40,7 @@ export default function AdminClient({ initialMatches, initialLeaderboards, teams
         <button
           onClick={() => {
             if (confirm("Logout from admin session?")) {
-              localStorage.removeItem("hexa_admin_session");
+              localStorage.removeItem("hexa_admin_session_v2");
               window.location.reload();
             }
           }}

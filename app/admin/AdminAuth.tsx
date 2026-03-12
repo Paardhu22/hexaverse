@@ -9,8 +9,8 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const session = localStorage.getItem('hexa_admin_session');
-    if (session === 'hexa_authenticated_2026') {
+    const session = localStorage.getItem('hexa_admin_session_v2');
+    if (session === 'hexa_authenticated_v2_2026') {
       setIsAuthenticated(true);
     }
     setIsChecking(false);
@@ -18,8 +18,8 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'hexaverse@2026') {
-      localStorage.setItem('hexa_admin_session', 'hexa_authenticated_2026');
+    if (password === 'NIAT@HEXAVERSE@2026!@#') {
+      localStorage.setItem('hexa_admin_session_v2', 'hexa_authenticated_v2_2026');
       setIsAuthenticated(true);
       setError('');
     } else {
