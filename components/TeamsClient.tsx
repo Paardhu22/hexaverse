@@ -27,16 +27,31 @@ interface Match {
   venue: string | null;
 }
 
+interface Leaderboard {
+  team: string;
+  points: number;
+}
+
 interface TeamsClientProps {
   teams: Team[];
   matches: Match[];
+  leaderboards: Leaderboard[];
 }
 
-export default function TeamsClient({ teams, matches }: TeamsClientProps) {
+export default function TeamsClient({ teams, matches, leaderboards }: TeamsClientProps) {
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
 
   const getTeamMatches = (teamName: string) => {
     return matches.filter(m => m.teamA === teamName || m.teamB === teamName);
+  };
+
+  const getTeamWins = (teamName: string) => {
+    return matches.filter(m => m.status === 'Finished' && m.winner === teamName).length;
+  };
+
+  const getTeamPoints = (teamName: string) => {
+    const entry = leaderboards.find(l => l.team.toLowerCase() === teamName.toLowerCase());
+    return entry ? entry.points : 0;
   };
 
   return (
@@ -44,6 +59,8 @@ export default function TeamsClient({ teams, matches }: TeamsClientProps) {
       {teams.map((team) => {
         const isSelected = selectedTeam === team.name;
         const teamMatches = getTeamMatches(team.name);
+        const wins = getTeamWins(team.name);
+        const points = getTeamPoints(team.name);
 
         return (
           <div 
@@ -86,14 +103,14 @@ export default function TeamsClient({ teams, matches }: TeamsClientProps) {
                 <div className="bg-black/30 p-4 rounded-xl border border-white/5 flex items-center gap-3">
                   <Target className="w-6 h-6 text-blue-400" />
                   <div>
-                    <div className="text-2xl font-bold text-white">{team.wins}</div>
+                    <div className="text-2xl font-bold text-white">{wins}</div>
                     <div className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">Wins</div>
                   </div>
                 </div>
                 <div className="bg-black/30 p-4 rounded-xl border border-white/5 flex items-center gap-3">
                   <Award className="w-6 h-6 text-purple-400" />
                   <div>
-                    <div className="text-2xl font-bold text-white">{team.points}</div>
+                    <div className="text-2xl font-bold text-white">{points}</div>
                     <div className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">Total Points</div>
                   </div>
                 </div>

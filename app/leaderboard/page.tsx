@@ -7,7 +7,10 @@ export default async function LeaderboardPage() {
   let leaderboards: any[] = [];
   try {
     leaderboards = await prisma.leaderboard.findMany({
-      orderBy: { points: 'desc' }
+      orderBy: [
+        { points: 'desc' },
+        { gold: 'desc' }
+      ]
     });
   } catch (error) {
     console.error("Database connection error on leaderboard page:", error);

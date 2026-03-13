@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 export default async function TeamsPage() {
   let teams: any[] = [];
   let matches: any[] = [];
+  let leaderboards: any[] = [];
   try {
     teams = await prisma.team.findMany({
       orderBy: { name: 'asc' }
@@ -14,6 +15,8 @@ export default async function TeamsPage() {
     matches = await prisma.match.findMany({
       orderBy: { time: 'asc' }
     });
+
+    leaderboards = await prisma.leaderboard.findMany();
   } catch (error) {
     console.error("Database connection error on teams page:", error);
   }
@@ -30,7 +33,7 @@ export default async function TeamsPage() {
           </p>
         </div>
 
-        <TeamsClient teams={teams} matches={matches} />
+        <TeamsClient teams={teams} matches={matches} leaderboards={leaderboards} />
       </div>
     </div>
   );

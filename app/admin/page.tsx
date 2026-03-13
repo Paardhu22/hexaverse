@@ -15,7 +15,10 @@ export default async function AdminPage() {
     });
 
     leaderboards = await prisma.leaderboard.findMany({
-      orderBy: { points: 'desc' }
+      orderBy: [
+        { points: 'desc' },
+        { gold: 'desc' }
+      ]
     });
 
     teams = await prisma.team.findMany({

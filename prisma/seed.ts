@@ -9,10 +9,10 @@ async function main() {
   await prisma.hallOfFame.deleteMany({})
 
   const teams = [
-    { name: 'VAJRA', captain: 'Alex', description: 'The thunderbolt team, ready to strike.', logo: '⚡' },
-    { name: 'VAYU', captain: 'Sam', description: 'Swift as the wind, uncatchable.', logo: '🌪️' },
-    { name: 'SAMUDRA', captain: 'Jordan', description: 'Deep and powerful, like the ocean.', logo: '🌊' },
-    { name: 'AGNI', captain: 'Chris', description: 'Fierce and blazing, burning the competition.', logo: '🔥' },
+    { name: 'VAJRA', captain: 'Yashwanth Roy', description: 'The thunderbolt team, ready to strike.', logo: '⚡' },
+    { name: 'VAYU', captain: 'Teja Reddy', description: 'Swift as the wind, uncatchable.', logo: '🌪️' },
+    { name: 'SAMUDRA', captain: 'Charan', description: 'Deep and powerful, like the ocean.', logo: '🌊' },
+    { name: 'AGNI', captain: 'Bommaraboina Kranthi Kiran', description: 'Fierce and blazing, burning the competition.', logo: '🔥' },
   ]
 
   for (const t of teams) {
