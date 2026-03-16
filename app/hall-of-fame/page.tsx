@@ -27,6 +27,44 @@ export default async function HallOfFamePage() {
           <History className="w-5 h-5" /> Celebrating eternal legends of HEXAVERSE.
         </p>
 
+        {/* 2026 Champion Spotlight */}
+        <div className="mb-24 relative group">
+          <div className="glass-card overflow-hidden border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] relative z-10">
+            <div className="absolute top-0 right-0 p-8 pt-12 opacity-5 select-none pointer-events-none">
+              <h2 className="text-[12rem] font-black italic text-white tracking-widest leading-none">2026</h2>
+            </div>
+
+            <div className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+              <div className="relative">
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 flex items-center justify-center p-6 shadow-2xl">
+                  <img
+                    src="/logos/Samudra_Logo-removebg-preview.png"
+                    alt="SAMUDRA"
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] brightness-110 contrast-125"
+                  />
+                </div>
+              </div>
+
+              {/* Champion Details */}
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-500 font-black tracking-widest uppercase text-sm mb-6">
+                  <Star className="w-4 h-4 fill-current" />
+                  2026 Champion
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+
+                <h2 className="text-6xl md:text-8xl font-black italic text-white tracking-tighter mb-4 leading-none">
+                  TEAM <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-200 to-blue-500">SAMUDRA</span>
+                </h2>
+
+                <p className="text-2xl text-gray-300 italic max-w-xl font-medium">
+                  "Deep and powerful, like the ocean. The undisputed kings of the 2026 Hexaverse season."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* 2025 Champion Spotlight */}
         <div className="mb-24 relative group">
           <div className="glass-card overflow-hidden border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] relative z-10">
